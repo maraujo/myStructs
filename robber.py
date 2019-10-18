@@ -1,4 +1,4 @@
-houses = [2,14,7,3,6]
+houses = [2,1,8,7,1,3]
 
 def robber(houses):
 	if len(houses) == 0:
@@ -8,12 +8,14 @@ def robber(houses):
 	if len(houses) == 2:
 		return max(houses[0], houses[1])
 
-	sol = []
-	sol.append(houses[0])
-	sol.append(max(houses[0],houses[1]))
-
+	sol_prev = houses[0]
+	sol = max(houses[0],houses[1])
+	new_sol = False
 	for i in range(2, len(houses)):
-		sol.append(max (sol[i - 1], houses[i] + sol[i - 2]))
-	return sol[-1]
+		if new_sol != False:
+			sol_prev = sol
+			sol = new_sol
+		new_sol = max(sol, houses[i] + sol_prev)
+	return new_sol
 
 print(robber(houses))
