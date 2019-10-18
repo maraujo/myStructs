@@ -16,7 +16,7 @@ class Node():
         return self.value
 
 # Generating Linked List
-# "a"<->"b"<->"a"
+# "a"->"b"->"a"
 n1 = Node()
 n2 = Node()
 n3 = Node()
